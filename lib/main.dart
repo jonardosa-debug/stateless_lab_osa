@@ -181,7 +181,7 @@ class StudentCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                        color: Color.fromARGB(221, 133, 66, 66),
                       ),
                     ),
                     const SizedBox(height: 2.0),
