@@ -18,7 +18,6 @@ class Student {
 }
 
 // 2. List of at least 5 Student objects (Hard-coded)
-// Gi-fix nako ang typo sa email ni Khen (gikan sa '>' ngadto sa '.')
 const List<Student> students = [
   Student(
     name: 'Khen Lumindas',
@@ -52,6 +51,7 @@ const List<Student> students = [
   ),
 ];
 
+// Stateless because it only builds the app configuration once.
 class DirectoryApp extends StatelessWidget {
   const DirectoryApp({super.key});
 
@@ -60,11 +60,11 @@ class DirectoryApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Campus Directory',
-      // CUSTOMIZATION 1: Theme Data (Teal color to match the target screenshot)
+      // CUSTOMIZATION 1: Theme Data with a custom Teal color scheme.
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 24, 10, 216),
-          primary: const Color.fromARGB(255, 129, 138, 9), // Exact Teal color
+          seedColor: const Color.fromARGB(255, 13, 148, 136), // Changed to Teal
+          primary: const Color.fromARGB(255, 13, 148, 136), 
         ),
         useMaterial3: true,
       ),
@@ -73,6 +73,7 @@ class DirectoryApp extends StatelessWidget {
   }
 }
 
+// Stateless because the list of students is hard-coded and does not change.
 class DirectoryScreen extends StatelessWidget {
   const DirectoryScreen({super.key});
 
@@ -80,7 +81,6 @@ class DirectoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Centering the title
         centerTitle: true,
         title: const Text(
           'Campus Directory',
@@ -95,7 +95,6 @@ class DirectoryScreen extends StatelessWidget {
       body: ListView(
         children: [
           const SectionHeader(title: 'Students'),
-          // Mapping the list to StudentCard widgets
           ...students.map((student) => StudentCard(student: student)),
         ],
       ),
@@ -103,6 +102,7 @@ class DirectoryScreen extends StatelessWidget {
   }
 }
 
+// Stateless because it only displays the title passed to it.
 class SectionHeader extends StatelessWidget {
   final String title;
 
@@ -117,7 +117,7 @@ class SectionHeader extends StatelessWidget {
         children: [
           Text(
             title,
-            // CUSTOMIZATION 2: Custom TextStyle for the header
+            // CUSTOMIZATION 2: Custom TextStyle for the header (bold and primary color).
             style: TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
@@ -132,7 +132,7 @@ class SectionHeader extends StatelessWidget {
   }
 }
 
-// StudentCard - Stateless because it just displays the data passed to it.
+// Stateless because it just displays the Student data passed to it.
 class StudentCard extends StatelessWidget {
   final Student student;
 
@@ -143,21 +143,19 @@ class StudentCard extends StatelessWidget {
     final String initial = student.name.isNotEmpty ? student.name[0] : '?';
 
     return Padding(
-      // Gi-adjust nako ang padding para dili lapad kaayo sa web browser
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 6.0),
-      // CUSTOMIZATION 3: Custom Card shape (rounded corners) and elevation
+      // CUSTOMIZATION 3: Custom Card shape (rounded corners) and subtle border.
       child: Card(
         elevation: 1.0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0), // Rounded card corners
-          side: const BorderSide(color: Colors.black12, width: 0.5), // Subtle border
+          borderRadius: BorderRadius.circular(12.0),
+          side: const BorderSide(color: Colors.black12, width: 0.5),
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Circle Avatar with big letter
               CircleAvatar(
                 radius: 28.0,
                 backgroundColor: Theme.of(context).colorScheme.primary,
@@ -171,7 +169,6 @@ class StudentCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 16.0),
-              // Expanded Column for text details
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,13 +190,11 @@ class StudentCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8.0),
-                    // InfoRow for Year Level
                     InfoRow(
                       icon: Icons.school,
                       text: 'Year ${student.yearLevel}',
                     ),
                     const SizedBox(height: 4.0),
-                    // InfoRow for Email
                     InfoRow(
                       icon: Icons.email,
                       text: student.email,
@@ -215,6 +210,7 @@ class StudentCard extends StatelessWidget {
   }
 }
 
+// Stateless because it just displays an icon and text from its constructor.
 class InfoRow extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -228,9 +224,9 @@ class InfoRow extends StatelessWidget {
         Icon(
           icon,
           size: 14.0,
-          color: const Color.fromARGB(255, 5, 2, 136), // Teal color for icons
+          color: const Color.fromARGB(255, 13, 148, 136), // Teal color for icons
         ),
-        const SizedBox(width: 8.0), // Small gap
+        const SizedBox(width: 8.0),
         Expanded(
           child: Text(
             text,
