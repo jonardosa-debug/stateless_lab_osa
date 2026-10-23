@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const DirectoryApp());
 
-// 1. Student Data Class
 class Student {
   final String name;
   final String course;
@@ -17,7 +16,6 @@ class Student {
   });
 }
 
-// 2. List of at least 5 Student objects (Hard-coded)
 const List<Student> students = [
   Student(
     name: 'Khen Lumindas',
@@ -51,7 +49,6 @@ const List<Student> students = [
   ),
 ];
 
-// Stateless because it only builds the app configuration once.
 class DirectoryApp extends StatelessWidget {
   const DirectoryApp({super.key});
 
@@ -60,10 +57,9 @@ class DirectoryApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Campus Directory',
-      // CUSTOMIZATION 1: Theme Data with a custom Teal color scheme.
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 13, 148, 136), // Changed to Teal
+          seedColor: const Color.fromARGB(255, 13, 148, 136), 
           primary: const Color.fromARGB(255, 13, 148, 136), 
         ),
         useMaterial3: true,
@@ -72,8 +68,6 @@ class DirectoryApp extends StatelessWidget {
     );
   }
 }
-
-// Stateless because the list of students is hard-coded and does not change.
 class DirectoryScreen extends StatelessWidget {
   const DirectoryScreen({super.key});
 
@@ -101,8 +95,6 @@ class DirectoryScreen extends StatelessWidget {
     );
   }
 }
-
-// Stateless because it only displays the title passed to it.
 class SectionHeader extends StatelessWidget {
   final String title;
 
@@ -132,7 +124,6 @@ class SectionHeader extends StatelessWidget {
   }
 }
 
-// Stateless because it just displays the Student data passed to it.
 class StudentCard extends StatelessWidget {
   final Student student;
 
@@ -209,8 +200,6 @@ class StudentCard extends StatelessWidget {
     );
   }
 }
-
-// Stateless because it just displays an icon and text from its constructor.
 class InfoRow extends StatelessWidget {
   final IconData icon;
   final String text;
